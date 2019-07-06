@@ -3,25 +3,57 @@ package main
 import (
 	"fmt"
 
-	"github.com/YoungsoonLee/dataStruct/src"
+	"github.com/YoungsoonLee/study-ds-algo-golang/tucker/datatStruct/src"
 )
 
 func main() {
-	h := &src.Heap{}
-	h.Push(2)
-	h.Push(6)
-	h.Push(9)
-	h.Push(6)
-	h.Push(7)
-	h.Push(8)
+	fmt.Println("abcde := ", src.Hash("abcde"))
+	fmt.Println("abcde := ", src.Hash("abcde"))
 
-	h.Print()
+	fmt.Println("abcdf := ", src.Hash("abcdf"))
+	fmt.Println("tbcde := ", src.Hash("tbcde"))
 
-	fmt.Println(h.Pop())
-	fmt.Println(h.Pop())
-	fmt.Println(h.Pop())
+	mp := src.CreateMap()
+	mp.Add("AAA", "0107777777")
+	mp.Add("BBB", "0108888888")
+	mp.Add("CCCSKHDKSFHKDF", "0101111111")
+	mp.Add("CCC", "97938479347329847")
 
-	h.Print()
+	fmt.Println(mp.Get("AAA"))
+	fmt.Println(mp.Get("CCC"))
+	fmt.Println(mp.Get("DDD"))
+
+	/*
+		h := &src.Heap{}
+		h.Push(2)
+		h.Push(6)
+		h.Push(9)
+		h.Push(6)
+		h.Push(7)
+		h.Push(8)
+
+		h.Print()
+
+		fmt.Println(h.Pop())
+		fmt.Println(h.Pop())
+		fmt.Println(h.Pop())
+
+		h.Print()
+	*/
+
+	/*
+		// heap 문제: [-1,3,-1,5,4], 2번째 큰 값
+		h := &src.Heap{}
+		nums := []int{-1, 3, -1, 5, 4}
+		for i := 0; i < len(nums); i++ {
+			h.MinPush(nums[i])
+			if h.Count() > 2 {
+				h.MinPop()
+			}
+		}
+
+		fmt.Println(h.MinPop())
+	*/
 
 	/*
 		tree := src.Tree{}
