@@ -2,6 +2,7 @@ package src
 
 import "fmt"
 
+// double linkedlist
 type Node struct {
 	Next *Node
 	Prev *Node
@@ -14,26 +15,25 @@ type LinkedList struct {
 }
 
 func (l *LinkedList) AddNode(val int) {
-	node := &Node{Val: val}
-
 	if l.Root == nil {
-		l.Root = node
+		l.Root = &Node{Val: val}
 		l.Tail = l.Root
 		return
 	}
-
-	l.Tail.Next = node
+	l.Tail.Next = &Node{Val: val}
 	prev := l.Tail
 	l.Tail = l.Tail.Next
 	l.Tail.Prev = prev
-	return
 }
 
 func (l *LinkedList) RemoveNode(node *Node) {
 	if node == l.Root {
 		l.Root = l.Root.Next
-		l.Root.Prev = nil
-		node.Next = nil
+		if l.Root != nil {
+			l.Root.Prev = nil
+		}
+
+		//node.next = nil ???
 		return
 	}
 
@@ -44,11 +44,25 @@ func (l *LinkedList) RemoveNode(node *Node) {
 		l.Tail.Prev = nil
 		l.Tail = prev
 	} else {
-		node.Prev = nil
+		//node.prev = nil ??
 		prev.Next = prev.Next.Next
+		prev.Next.Prev = prev
 	}
-
 	node.Next = nil
+}
+
+func (l *LinkedList) Front() int {
+	if l.Root != nil {
+		return l.Root.Val
+	}
+	return 0
+}
+
+func (l *LinkedList) PopFront() {
+	if l.Root == nil {
+		return
+	}
+	l.RemoveNode(l.Root)
 }
 
 func (l *LinkedList) Back() int {
@@ -65,20 +79,28 @@ func (l *LinkedList) PopBack() {
 	l.RemoveNode(l.Tail)
 }
 
-func (l *LinkedList) PrintNode() {
-	node := l.Root
-	for node.Next != nil {
-		fmt.Printf("%d ->", node.Val)
-		node = node.Next
+func (l *LinkedList) Empty() bool {
+	if l.Root == nil {
+		return true
 	}
-	fmt.Printf("%d \n", node.Val)
+	return false
+}
+
+func (l *LinkedList) PrintNode() {
+	pr := l.Root
+	for pr.Next != nil {
+		fmt.Printf("%d -> ", pr.Val)
+		pr = pr.Next
+	}
+	fmt.Printf("%d ", pr.Val)
+	fmt.Println()
 }
 
 func (l *LinkedList) PrintReverse() {
 	node := l.Tail
 	for node.Prev != nil {
-		fmt.Printf("%d ->", node.Val)
+		fmt.Printf("%d -> ", node.Val)
 		node = node.Prev
 	}
-	fmt.Printf("%d \n", node.Val)
+	fmt.Printf("%d\n", node.Val)
 }
