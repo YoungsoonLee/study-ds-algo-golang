@@ -31,7 +31,6 @@ func Test() {
 	}
 
 	fmt.Println("Success")
-	fmt.Println()
 }
 
 func testCalculate(testcase, op string, a, b int, expected int) bool {
