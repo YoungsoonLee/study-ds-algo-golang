@@ -12,7 +12,7 @@ func pop(c chan int) {
 func main() {
 	var c chan int
 	//c = make(chan int, 1)
-	c = make(chan int)
+	c = make(chan int) // zero channel
 
 	go pop(c)
 	c <- 10

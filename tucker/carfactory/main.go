@@ -14,15 +14,15 @@ type Plane struct {
 	val string
 }
 
-func MakeTire(carChan chan Car, planeChane chan Plane, outCarChan chan Car, ouPlaneChan chan Plane) {
+func MakeTire(carChan chan Car, planeChan chan Plane, outCarChan chan Car, outPlaneChan chan Plane) {
 	for {
 		select {
 		case car := <-carChan:
 			car.val += " tire c , "
 			outCarChan <- car
-		case plae := <-planeChane:
+		case plae := <-planeChan:
 			plae.val += " tire p , "
-			ouPlaneChan <- plae
+			outPlaneChan <- plae
 		}
 	}
 

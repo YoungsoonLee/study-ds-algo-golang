@@ -34,18 +34,23 @@ func (a *Account) Balance() int {
 }
 
 var accounts []*Account
+var globalLock *sync.Mutex
 
 // !!!
 func Transfer(sender, receiver int, money int) {
+	globalLock.Lock()
 	accounts[sender].Widthdraw(money)
 	accounts[receiver].Deposit(money)
+	globalLock.Unlock()
 }
 
 func GetTotalBalance() int {
+	globalLock.Lock()
 	total := 0
 	for i := 0; i < len(accounts); i++ {
 		total = accounts[i].Balance()
 	}
+	globalLock.Unlock()
 	return total
 }
 
@@ -83,6 +88,7 @@ func PrintTotalBalance() {
 
 func main() {
 	runtime.GOMAXPROCS(1)
+	globalLock = &sync.Mutex{}
 
 	for i := 0; i < 20; i++ {
 		accounts = append(accounts, &Account{balance: 1000, mutex: &sync.Mutex{}})
