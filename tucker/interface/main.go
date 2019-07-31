@@ -5,6 +5,10 @@ import (
 	"strconv"
 )
 
+type InterA interface {
+	AAA(int) int
+	BBB(int) string
+}
 type stA struct {
 }
 
