@@ -25,7 +25,7 @@ func (l *LinkedList) AddNode(val int) {
 	l.Tail.Next = node
 	prev := l.Tail
 	l.Tail = l.Tail.Next
-	l.Tail.Prev = prev
+	l.Tail.Prev = prev // !!!
 
 }
 
@@ -83,6 +83,7 @@ func (l *LinkedList) RemoveNode(node *Node) {
 			prev = prev.Next
 		}
 	*/
+
 	prev := node.Prev
 
 	if node == l.Tail {
@@ -107,7 +108,7 @@ func (l *LinkedList) PrintNode() {
 	fmt.Printf("%d\n", node.Val)
 }
 
-func (l *LinkedList) PrintRever() {
+func (l *LinkedList) PrintReverse() {
 	node := l.Tail
 	for node.Prev != nil {
 		fmt.Printf("%d ->", node.Val)
