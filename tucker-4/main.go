@@ -7,29 +7,74 @@ import (
 )
 
 func main() {
-	tree := datastruct.Tree{}
+	h := &datastruct.Heap{}
+	h.Push(2)
+	h.Push(6)
+	h.Push(9)
+	h.Push(6)
+	h.Push(7)
+	h.Push(8)
 
-	val := 1
-	tree.AddNode(val)
-	val++
+	h.Print()
 
-	for i := 0; i < 3; i++ {
-		tree.Root.AddNode(val)
+	fmt.Println(h.Pop())
+	fmt.Println(h.Pop())
+	fmt.Println(h.Pop())
+
+	/*
+		tree := datastruct.NewBinaryTree(5)
+		tree.Root.AddNode(3)
+		tree.Root.AddNode(2)
+		tree.Root.AddNode(4)
+		tree.Root.AddNode(8)
+		tree.Root.AddNode(7)
+		tree.Root.AddNode(6)
+		tree.Root.AddNode(10)
+		tree.Root.AddNode(9)
+
+		tree.Print()
+		fmt.Println()
+
+		if found, cnt := tree.Search(6); found {
+			fmt.Println("found 6, ", cnt)
+		} else {
+			fmt.Println("not found 6, ", cnt)
+		}
+
+		fmt.Println()
+
+		if found, cnt := tree.Search(11); found {
+			fmt.Println("found 11, ", cnt)
+		} else {
+			fmt.Println("not found 11, ", cnt)
+		}
+	*/
+
+	/*
+		tree := datastruct.Tree{}
+
+		val := 1
+		tree.AddNode(val)
 		val++
-	}
 
-	for i := 0; i < len(tree.Root.Childs); i++ {
-		for j := 0; j < 2; j++ {
-			tree.Root.Childs[i].AddNode(val)
+		for i := 0; i < 3; i++ {
+			tree.Root.AddNode(val)
 			val++
 		}
-	}
 
-	tree.DFS1()
-	fmt.Println()
-	tree.DFS2()
-	fmt.Println()
-	tree.BFS()
+		for i := 0; i < len(tree.Root.Childs); i++ {
+			for j := 0; j < 2; j++ {
+				tree.Root.Childs[i].AddNode(val)
+				val++
+			}
+		}
+
+		tree.DFS1()
+		fmt.Println()
+		tree.DFS2()
+		fmt.Println()
+		tree.BFS()
+	*/
 
 	/*
 		stack2 := datastruct.NewStack()
