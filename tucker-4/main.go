@@ -7,19 +7,38 @@ import (
 )
 
 func main() {
-	h := &datastruct.Heap{}
-	h.Push(2)
-	h.Push(6)
-	h.Push(9)
-	h.Push(6)
-	h.Push(7)
-	h.Push(8)
+	m := datastruct.CreateMap()
+	m.Add("AAA", "0107777777")
+	m.Add("BBB", "0108888888")
+	m.Add("CDKHFKJFH", "0111111111")
+	m.Add("CCC", "0109990090")
 
-	h.Print()
+	fmt.Println(m.Get("AAA"))
+	fmt.Println(m.Get("CCC"))
+	fmt.Println(m.Get("DDD"))
 
-	fmt.Println(h.Pop())
-	fmt.Println(h.Pop())
-	fmt.Println(h.Pop())
+	/*
+		fmt.Println("abcde = ", datastruct.Hash("abcde"))
+		fmt.Println("abcde = ", datastruct.Hash("abcde"))
+		fmt.Println("abcdf = ", datastruct.Hash("abcdf"))
+		fmt.Println("tbcde = ", datastruct.Hash("tbcde"))
+	*/
+
+	/*
+		h := &datastruct.Heap{}
+		h.Push(2)
+		h.Push(6)
+		h.Push(9)
+		h.Push(6)
+		h.Push(7)
+		h.Push(8)
+
+		h.Print()
+
+		fmt.Println(h.Pop())
+		fmt.Println(h.Pop())
+		fmt.Println(h.Pop())
+	*/
 
 	/*
 		tree := datastruct.NewBinaryTree(5)
